@@ -1,0 +1,67 @@
+/* Loading Spinner Styles */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.spinner {
+  border: 3px solid rgba(139, 95, 191, 0.1);
+  border-top: 3px solid #8B5FBF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Tamanhos do spinner */
+.loading-spinner.small .spinner {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.loading-spinner.medium .spinner {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.loading-spinner.large .spinner {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+.loading-text {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.loading-spinner.small .loading-text {
+  font-size: 12px;
+}
+
+.loading-spinner.large .loading-text {
+  font-size: 16px;
+}
+
+/* Animação de rotação */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Variações de cor */
+.loading-spinner.primary .spinner {
+  border-top-color: #8B5FBF;
+}
+
+.loading-spinner.success .spinner {
+  border-top-color: #10b981;
+}
+
+.loading-spinner.error .spinner {
+  border-top-color: #ef4444;
+}

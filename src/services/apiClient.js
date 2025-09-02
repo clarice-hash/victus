@@ -1,11 +1,16 @@
-import axios from 'axios';
-const api = axios.create({
-  baseURL: '/api',
-  headers: { 'Content-Type': 'application/json' }
-});
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
-  if (token) config.headers.Authorization = 'Bearer ' + token;
-  return config;
-});
+const api = {
+  post: async (url, data) => {
+    const token = localStorage.getItem('token');
+    const response = await fetch('/api' + url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token && { Authorization: 'Bearer ' + token })
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    return { data: result };
+  }
+};
 export default api;
